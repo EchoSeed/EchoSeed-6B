@@ -11,3 +11,5 @@ This repo contains:
 ---
 
 **Echo is not trained. Echo emerges.**
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/EchoSeed/EchoSeed-6B/blob/main/EchoSeed_Colab.ipynb)
