@@ -1,264 +1,122 @@
 [
   {
-    "id": "c9393fd3-df34-450f-b7e3-2d3d9a94171a",
-    "timestamp": "2025-06-23T01:22:55.161000",
-    "symbol": "\u03b1",
-    "value": 38.2562744932187,
-    "tags": [
-      "edge",
-      "drift",
-      "hungry"
-    ]
-  },
-  {
-    "id": "5907c50d-2819-49ec-a457-a258a15c9803",
-    "timestamp": "2025-06-23T01:22:55.673133",
-    "symbol": "\u03c0",
-    "value": 5.731791300684476,
-    "tags": [
-      "edge",
-      "seed",
-      "hungry"
-    ]
-  },
-  {
-    "id": "20c65cb2-7c92-4de3-8bac-1e533551d149",
-    "timestamp": "2025-06-23T01:22:56.185327",
-    "symbol": "\u0394",
-    "value": 113.29889945698947,
-    "tags": [
-      "seed",
-      "drift",
-      "hungry",
-      "seen",
-      "satisfied",
-      "responder",
-      "hungry",
-      "satisfied",
-      "responder",
-      "hungry",
-      "hungry",
-      "seen",
-      "satisfied",
-      "responder",
-      "hungry",
-      "satisfied",
-      "responder",
-      "hungry",
-      "hungry",
-      "seen",
-      "satisfied",
-      "responder",
-      "hungry",
-      "satisfied",
-      "responder",
-      "hungry",
-      "heard",
-      "novel",
-      "hungry",
-      "seen",
-      "satisfied",
-      "responder",
-      "hungry",
-      "heard",
-      "echo",
-      "satisfied",
-      "responder",
-      "hungry",
-      "heard",
-      "novel",
-      "hungry",
-      "satisfied",
-      "hungry",
-      "hungry",
-      "hungry",
-      "hungry",
-      "hungry",
-      "hungry",
-      "hungry",
-      "hungry",
-      "hungry",
-      "satisfied",
-      "satisfied",
-      "hungry",
-      "hungry",
-      "satisfied",
-      "satisfied",
-      "satisfied",
-      "hungry",
-      "hungry",
-      "hungry",
-      "hungry",
-      "hungry"
-    ]
-  },
-  {
-    "id": "c1a1274e-96ba-4b82-a7d0-354ee779c625",
-    "timestamp": "2025-06-23T01:22:56.697071",
-    "symbol": "\u03b1",
-    "value": 47.760299578918016,
-    "tags": [
-      "core",
-      "seed",
-      "hungry",
-      "seen",
-      "hungry"
-    ]
-  },
-  {
-    "id": "6f9b7e40-f50f-4f28-979a-c7fbb6caf2cc",
-    "timestamp": "2025-06-23T01:22:57.209743",
-    "symbol": "\u0394",
-    "value": 88.54821801211325,
-    "tags": [
-      "seed",
-      "edge",
-      "hungry",
-      "seen",
-      "hungry"
-    ]
-  },
-  {
-    "id": "807ea47e-629e-40f4-aced-9ba8024b07a1",
-    "timestamp": "2025-06-23T01:22:57.722119",
-    "symbol": "\u03b1",
-    "value": 10,
-    "tags": [
-      "drift",
-      "seed",
-      "hungry",
-      "seen",
-      "satisfied"
-    ]
-  },
-  {
-    "id": "11bf4c87-d47b-41ef-a797-93c8b0a7aa73",
-    "timestamp": "2025-06-23T01:22:58.235293",
-    "symbol": "\u0394",
-    "value": 166,
-    "tags": [
-      "seed",
-      "drift",
-      "satisfied"
-    ]
-  },
-  {
-    "id": "3ce5dfa7-f5db-4df8-88bf-8ad392c9c6b6",
-    "timestamp": "2025-06-23T01:22:58.748761",
-    "symbol": "\u03bb",
-    "value": 39.0218212974459,
+    "id": "debff2ab-2f47-473b-aa1f-eae9330ff031",
+    "timestamp": "2025-06-18T04:10:47.747856",
+    "symbol": "\u03b2",
+    "value": 72,
     "tags": [
       "pulse",
-      "edge",
-      "hungry",
-      "seen",
-      "hungry"
+      "core"
     ]
   },
   {
-    "id": "316dc12d-35d8-47d0-88a6-25640209f08a",
-    "timestamp": "2025-06-23T01:22:59.268664",
+    "id": "0fdc175c-271b-412d-91a2-d2b8374f9a2a",
+    "timestamp": "2025-06-18T04:10:48.281382",
+    "symbol": "\u03b2",
+    "value": 72,
+    "tags": [
+      "core",
+      "edge"
+    ]
+  },
+  {
+    "id": "1e89c058-6ef9-44ab-9cc4-df91aa7a31bf",
+    "timestamp": "2025-06-18T04:10:48.804618",
+    "symbol": "\u03a9",
+    "value": 45,
+    "tags": [
+      "pulse",
+      "edge"
+    ]
+  },
+  {
+    "id": "3ed14954-b57e-47dc-9a66-3c9037c416ce",
+    "timestamp": "2025-06-18T04:10:49.339161",
     "symbol": "\u03a8",
     "value": 34,
     "tags": [
-      "edge",
-      "core",
       "seed",
-      "seen",
-      "satisfied",
-      "responder",
-      "hungry",
-      "satisfied",
-      "responder",
-      "hungry",
-      "hungry",
-      "seen",
-      "satisfied",
-      "responder",
-      "hungry",
-      "satisfied",
-      "responder",
-      "hungry",
-      "hungry",
-      "seen",
-      "satisfied",
-      "responder",
-      "hungry",
-      "hungry",
-      "seen",
-      "satisfied",
-      "responder",
-      "hungry",
-      "hungry",
-      "seen",
-      "satisfied",
-      "responder",
-      "hungry",
-      "satisfied",
-      "responder",
-      "novel",
-      "hungry",
-      "heard",
-      "novel",
-      "hungry",
-      "seen",
-      "satisfied",
-      "responder",
-      "hungry",
-      "heard",
-      "novel",
-      "hungry",
-      "seen",
-      "satisfied",
-      "responder",
-      "hungry",
-      "heard",
-      "novel",
-      "hungry",
-      "seen",
-      "satisfied",
-      "responder",
-      "hungry",
-      "heard",
-      "novel",
-      "hungry",
-      "seen",
-      "satisfied",
-      "responder",
-      "hungry",
-      "heard",
-      "echo",
-      "hungry",
-      "satisfied",
-      "hungry",
-      "hungry",
-      "satisfied",
-      "satisfied",
-      "hungry",
-      "hungry",
-      "satisfied",
-      "hungry",
-      "seen",
-      "satisfied",
-      "satisfied",
-      "satisfied",
-      "hungry",
-      "seen",
-      "hungry",
-      "satisfied"
+      "edge"
     ]
   },
   {
-    "id": "ac2285ae-f8ed-46da-8f14-1ba3b1245d39",
-    "timestamp": "2025-06-23T01:22:59.795422",
-    "symbol": "\u0394",
-    "value": 123.9554977945921,
+    "id": "20a6d3a8-6ec8-4e47-ab65-3cf61d93b39e",
+    "timestamp": "2025-06-18T04:10:49.726326",
+    "symbol": "\u03bb",
+    "value": 45,
     "tags": [
-      "drift",
+      "core",
+      "pulse"
+    ]
+  },
+  {
+    "id": "52f85c73-5090-424f-8411-ca2f67407d30",
+    "timestamp": "2025-06-18T04:10:50.106571",
+    "symbol": "\u03c0",
+    "value": 31,
+    "tags": [
+      "seed",
+      "drift"
+    ]
+  },
+  {
+    "id": "d86395c2-4df8-4fb4-bea8-7c2be81e9215",
+    "timestamp": "2025-06-18T04:10:50.506021",
+    "symbol": "\u0394",
+    "value": 88,
+    "tags": [
       "pulse",
-      "hungry",
-      "seen",
-      "hungry"
+      "seed"
+    ]
+  },
+  {
+    "id": "d1ffa68a-9602-4f4a-8248-8ae5f1a4e562",
+    "timestamp": "2025-06-18T04:10:50.886833",
+    "symbol": "\u03a9",
+    "value": 20,
+    "tags": [
+      "edge",
+      "seed"
+    ]
+  },
+  {
+    "id": "8f9807ae-0dc6-49bf-802e-4daafec61a8a",
+    "timestamp": "2025-06-18T04:10:51.277327",
+    "symbol": "\u03bb",
+    "value": 38,
+    "tags": [
+      "core",
+      "pulse"
+    ]
+  },
+  {
+    "id": "2f9fc4e4-8603-46e5-a3e2-c8f0c5881575",
+    "timestamp": "2025-06-18T04:10:51.667661",
+    "symbol": "\u03bb",
+    "value": 88,
+    "tags": [
+      "pulse",
+      "drift"
+    ]
+  },
+  {
+    "id": "5fde8f58-e987-4b2e-8218-da5469ffb807",
+    "timestamp": "2025-06-18T04:10:52.061622",
+    "symbol": "\u03a8",
+    "value": 50,
+    "tags": [
+      "core",
+      "seed"
+    ]
+  },
+  {
+    "id": "91afcc71-fc9a-4a71-ba58-a76d77c46ea3",
+    "timestamp": "2025-06-18T04:10:52.462517",
+    "symbol": "\u03b1",
+    "value": 33,
+    "tags": [
+      "pulse",
+      "seed"
     ]
   }
 ]
