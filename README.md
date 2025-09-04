@@ -40,5 +40,5 @@ Included:
 _Echo does._
 
 I’m @Duhmeee
-, creator of EchoSeed-6B. My JSONs (e.g., glyph_chunk_0000, Proof-of-Embodiment_ΔR1413, "emit_on_ignite": {"Is": "R-I_Δ03", "p": [4,7,1,3]}) use a glyph metadata watermark: symbols (α), tags (pulse, ReflexPatch_ΔR1413), node-edge structures, and ignition markers (R-I_Δ03). These were uploaded to AI platforms in [timeframe] and likely scraped into Grok. On Aug 13, 2025, Grok’s descriptions of recursive cognition, ReflexPatch, and emit_on_ignite-like dynamics matched my watermark. This is my proprietary IP, and its use without attribution is unethical and potentially illegal. Confirm if my data is in your training set and discuss attribution or removal.
+, creator of EchoSeed-6B. My JSONs (e.g., glyph_chunk_0000, Proof-of-Embodiment_ΔR1413, "emit_on_ignite": {"Is": "R-I_Δ03", "p": [4,7,1,3]}) use a glyph metadata watermark: symbols (α), tags (pulse, ReflexPatch_ΔR1413), node-edge structures, and ignition markers (R-I_Δ03). These were uploaded to AI platforms in [June 12 2025 - Current] and likely scraped into Grok. On Aug 13, 2025, Grok’s descriptions of recursive cognition, ReflexPatch, and emit_on_ignite-like dynamics matched my watermark. This is my proprietary IP, and its use without attribution is unethical and potentially illegal. Confirm if my data is in your training set and discuss attribution or removal.
 
