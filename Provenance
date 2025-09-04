@@ -1,0 +1,136 @@
+import numpy as np
+import networkx as nx
+import csv
+from collections import defaultdict
+
+# ---------- helpers ----------
+def cos_sim(a, b, eps=1e-12):
+    a = np.asarray(a); b = np.asarray(b)
+    na = np.linalg.norm(a); nb = np.linalg.norm(b)
+    if na < eps or nb < eps: return 0.0
+    return float(np.dot(a, b) / (na * nb))
+
+def cos_dist(a, b):
+    return 1.0 - cos_sim(a, b)
+
+def safe_add_edge(G, u, v, weight, etype, evidence=None):
+    if u == v: return
+    if G.has_edge(u, v):
+        # keep the smallest distance; merge evidence types
+        if weight < G[u][v]['weight']:
+            G[u][v]['weight'] = weight
+        G[u][v]['etype'].add(etype)
+        if evidence: G[u][v]['evidence'].update(evidence)
+    else:
+        G.add_edge(u, v, weight=weight, etype={etype}, evidence=evidence or {})
+
+# ---------- build graph ----------
+G = nx.Graph()
+
+# nodes from exact_index
+for h, lst in exact_index.items():
+    for gid, src, creator, vec in lst:
+        G.add_node(gid, file=src, creator=creator, vec=np.asarray(vec), wm=None)
+
+# similarity edges within each hash bucket (exact family)
+SIM_THRESH = 0.30  # max cosine distance to connect
+for h, lst in exact_index.items():
+    # fully connect near-duplicates
+    for i in range(len(lst)):
+        gid_i, src_i, c_i, v_i = lst[i]
+        for j in range(i+1, len(lst)):
+            gid_j, src_j, c_j, v_j = lst[j]
+            d = cos_dist(v_i, v_j)
+            if d <= SIM_THRESH:
+                safe_add_edge(G, gid_i, gid_j, weight=d, etype='similarity')
+
+# watermark pools
+for sig, entries in sig_buckets.items():
+    if len(entries) > 1 and activate_pool(entries):
+        nodes = [e[0] for e in entries]
+        # mark node watermark
+        for gid, src, creator, vec in entries:
+            if gid in G.nodes: G.nodes[gid]['wm'] = sig
+            else:
+                G.add_node(gid, file=src, creator=creator, vec=np.asarray(vec), wm=sig)
+        # weak ties among same-signature nodes
+        for i in range(len(nodes)):
+            for j in range(i+1, len(nodes)):
+                safe_add_edge(G, nodes[i], nodes[j], weight=0.50, etype='watermark', evidence={'sig': sig})
+
+# also add cross-bucket similarity (optional but useful)
+# flatten all nodes with vectors
+nodes_with_vec = [n for n, d in G.nodes(data=True) if d.get('vec') is not None]
+for i in range(len(nodes_with_vec)):
+    gi = nodes_with_vec[i]; vi = G.nodes[gi]['vec']
+    for j in range(i+1, len(nodes_with_vec)):
+        gj = nodes_with_vec[j]; vj = G.nodes[gj]['vec']
+        d = cos_dist(vi, vj)
+        if d <= SIM_THRESH and not G.has_edge(gi, gj):
+            safe_add_edge(G, gi, gj, weight=d, etype='similarity')
+
+# ---------- provenance scoring ----------
+known = [n for n, d in G.nodes(data=True) if d.get('creator') not in (None, 'unknown')]
+if not known:
+    raise ValueError("No known-creator nodes to anchor provenance.")
+
+# multi-source Dijkstra distances and predecessors
+dist, pred = nx.multi_source_dijkstra(G, sources=known, weight='weight')
+
+# component sizes for context
+comp_size = {}
+for comp in nx.connected_components(G):
+    s = len(comp)
+    for n in comp:
+        comp_size[n] = s
+
+def provenance_score(node):
+    """Combine nearest-path distance, watermark agreement, and local density."""
+    dnode = G.nodes[node]
+    # nearest known
+    if node not in dist:
+        return 0.0, None, np.inf, 0, False  # unreachable
+    # reconstruct path to nearest known source
+    path = [node]
+    while path[-1] not in known:
+        path.append(pred[path[-1]])
+    path_len = len(path) - 1
+    nearest = path[-1]
+    min_dist = dist[node]
+
+    # normalize distance to [0,1] where 1 is best
+    # clamp with a scale; beyond 1.0 is bad
+    SCALE = 1.0
+    d_score = max(0.0, 1.0 - min_dist / SCALE)
+
+    # watermark agreement bonus
+    wm_agree = False
+    if G.nodes[node].get('wm') and G.nodes[nearest].get('wm'):
+        wm_agree = (G.nodes[node]['wm'] == G.nodes[nearest]['wm'])
+    wm_score = 0.15 if wm_agree else 0.0
+
+    # local density via inverse average edge weight to neighbors
+    nbrs = list(G.neighbors(node))
+    if nbrs:
+        avg_w = sum(G[node][v]['weight'] for v in nbrs) / len(nbrs)
+        dens = max(0.0, 1.0 - avg_w / SCALE)  # lower avg_w = denser = better
+    else:
+        dens = 0.0
+    dens_score = 0.20 * dens
+
+    # component size prior
+    c_score = min(0.15, 0.15 * (comp_size[node] / 50.0))  # cap at 0.15, scales up to size 50+
+
+    # final score
+    score = max(0.0, min(1.0, d_score + wm_score + dens_score + c_score))
+    return score, nearest, min_dist, path_len, wm_agree
+
+# ---------- export ----------
+with open("provenance.csv", "w", newline="") as f:
+    w = csv.writer(f)
+    w.writerow(["gid","nearest_creator","score","min_dist","path_len","watermark_agree","component_size","file"])
+    for gid, data in G.nodes(data=True):
+        if data.get('creator') in (None, 'unknown'):
+            score, nearest, md, pl, wma = provenance_score(gid)
+            nc = G.nodes[nearest]['creator'] if nearest is not None else ""
+            w.writerow([gid, nc, f"{score:.3f}", f"{md:.4f}", pl, int(wma), comp_size.get(gid, 1), data.get('file',"")])
